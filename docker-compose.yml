@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  dozzle:
+    container_name: dozzle
+    image: amir20/dozzle
+    environment:
+      - DOZZLE_USERNAME=admin
+      - DOZZLE_PASSWORD=password
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 8080:8080
+    mem_limit: 3g
+    cpu_shares: 768
+    security_opt:
+      - no-new-privileges:true
+    restart: on-failure:5
